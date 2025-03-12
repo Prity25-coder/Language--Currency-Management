@@ -1,14 +1,46 @@
+import { useEffect, useState } from "react";
 import "./App.css";
-import Header from "./components/Header";
+import Navbar from "./components/Navbar";
+import Header from "./components/Pages/Header";
 
 function App() {
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  // Toggle Dark Mode
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
+
+  // Apply theme on page load
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
+
   return (
     <>
-      <div>
-        <h1 className="text-3xl font-bold ">
-          Multi-Language and Multi-Currency Content Management Application
-        </h1>
-        <Header/>
+      <div
+        className={
+          theme === "dark"
+            ? "dark:bg-gray-900 dark:text-white"
+            : "bg-white text-black"
+        }
+      >
+        <div>
+          <button
+            onClick={toggleTheme}
+            className="fixed top-4 right-4 p-2 bg-gray-200 dark:bg-gray-800 rounded-md"
+          >
+            {theme === "light" ? "🌙" : "☀️"}
+          </button>
+        </div>
+        <Navbar />
+        <Header />
       </div>
     </>
   );
