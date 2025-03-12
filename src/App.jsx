@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Header from "./components/Pages/Header";
+import Product from "./components/Product";
+import About from "./components/Pages/About";
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -41,6 +43,8 @@ function App() {
         </div>
         <Navbar />
         <Header />
+        <Product/>
+        <About/>
       </div>
     </>
   );
