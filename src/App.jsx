@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Header from "./components/Pages/Header";
 import Product from "./components/Product";
 import About from "./components/Pages/About";
+import Contact from "./components/Pages/Contact";
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -45,6 +46,7 @@ function App() {
         <Header />
         <Product/>
         <About/>
+        <Contact/>
       </div>
     </>
   );
